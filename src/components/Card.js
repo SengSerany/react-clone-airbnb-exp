@@ -19,7 +19,8 @@ Notes:
   this data into the component.
 */
 
-export default function Card() {
+export default function Card({img, rating, reviewCount, country, title, price}) {
+    
     return (
         <section className="cards">
             <div className="card">
@@ -27,16 +28,16 @@ export default function Card() {
                     <div className="status--exp">
                         <p>SOLD-OUT</p>
                     </div>
-                    <img src={require("../images/katie-zaferes.png")} alt="images de l'experience" className="img--card" />
+                    <img src={require(`../images/${img}`)} alt="images de l'experience" className="img--card" />
                 </div>
                 <div className="card--main">
                     <div className="card--main--infos">
                         <div className="card--main--rate--location">
                             <img src={require("../images/star.png")} alt="star" className="card--img--star"/>
-                            <p className="card--star--rate">5.0 <em className="card--em--rate--location"> (6) • USA</em></p>
+                            <p className="card--star--rate">{rating} <em className="card--em--rate--location"> ({reviewCount}) • {country}</em></p>
                         </div>
-                        <p className="card--main--text">Life lessons with Katie Zaferes</p>
-                        <p className="card--main--price"><em className="card--em--price">From $136</em> / person</p>
+                        <p className="card--main--text">{title}</p>
+                        <p className="card--main--price"><em className="card--em--price">From ${price}</em> / person</p>
                     </div>
                 </div>
                 <div className="card--footer"></div>
