@@ -19,29 +19,41 @@ Notes:
   this data into the component.
 */
 
-export default function Card({img, rating, reviewCount, country, title, price}) {
+export default function Card({id, img, rating, reviewCount, country, title, price, openSpots}) {
     
+    const disponibility = () => {
+        if (openSpots === 0) {
+            return (
+                <div className="status--exp">
+                    <p>SOLD-OUT</p>
+                </div>
+            )
+        } else if (country === "Online") {
+            return (
+                <div className="status--exp">
+                    <p>ONLINE</p>
+                </div>
+            )
+        }
+    }
+
     return (
-        <section className="cards">
-            <div className="card">
-                <div className="card--header">
-                    <div className="status--exp">
-                        <p>SOLD-OUT</p>
-                    </div>
-                    <img src={require(`../images/${img}`)} alt="images de l'experience" className="img--card" />
-                </div>
-                <div className="card--main">
-                    <div className="card--main--infos">
-                        <div className="card--main--rate--location">
-                            <img src={require("../images/star.png")} alt="star" className="card--img--star"/>
-                            <p className="card--star--rate">{rating} <em className="card--em--rate--location"> ({reviewCount}) • {country}</em></p>
-                        </div>
-                        <p className="card--main--text">{title}</p>
-                        <p className="card--main--price"><em className="card--em--price">From ${price}</em> / person</p>
-                    </div>
-                </div>
-                <div className="card--footer"></div>
+        <div id={id} className="card">
+            <div className="card--header">
+                {disponibility()}
+                <img src={require(`../images/${img}`)} alt="images de l'experience" className="img--card" />
             </div>
-        </section>
+            <div className="card--main">
+                <div className="card--main--infos">
+                    <div className="card--main--rate--location">
+                        <img src={require("../images/star.png")} alt="star" className="card--img--star"/>
+                        <p className="card--star--rate">{rating} <em className="card--em--rate--location"> ({reviewCount}) • {country}</em></p>
+                    </div>
+                    <p className="card--main--text">{title}</p>
+                    <p className="card--main--price"><em className="card--em--price">From ${price}</em> / person</p>
+                </div>
+            </div>
+            <div className="card--footer"></div>
+        </div>
     )
 }

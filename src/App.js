@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Card from "./components/Card";
+import Data from "./data";
 import "./style.css";
 
 export default function App() {
@@ -9,14 +10,20 @@ export default function App() {
         <div className="app">
             <Navbar />
             <Hero />
-            <Card 
-                img="katie-zaferes.png"
-                rating="5.0"
-                reviewCount={6}
-                country="USA"
-                title="Life lessons with Katie Zaferes"
-                price={136}
-            />
+            <section className="cards">
+                {Data.map( data =>
+                    <Card 
+                        id={data.id}
+                        img={data.coverImg}
+                        rating={data.stats.rating}
+                        reviewCount={data.stats.reviewCount}
+                        country={data.location}
+                        title={data.description}
+                        price={data.price}
+                        openSpots={data.openSpots}
+                />  
+                )}
+            </section>
         </div>
         
     )

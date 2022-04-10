@@ -10,8 +10,10 @@ body {
 .app {
     width: 550px;
     margin: auto;
+    padding-left: 36px;
     background-color: #FFFFFF;
     font-family: Poppins;
+    overflow-x: hidden;
 }
 
 nav {
@@ -19,13 +21,14 @@ nav {
     align-items: center;
     height: 70px;
     background-color: #FFFFFF;
+    margin-left: -36px;
     box-shadow: 0px 3px 7.5px rgba(0, 0, 0, 0.1);
 }
 
 .img--logo {
-    margin-left: 30px;
     width: 82px;
     height: 25.35px;
+    margin-left: 30px;
 }
 
 .hero {
@@ -44,7 +47,7 @@ nav {
     font-size: 36px;
     font-weight: 600;
     line-height: 40px;
-    margin: 32px 0 0 36px;
+    margin: 32px 0 0 0;
 }
 
 .hero > h3 {
@@ -52,13 +55,23 @@ nav {
     font-weight: 300;
     line-height: 18px;
     margin-top: 16px;
-    margin-left: 36px;
     margin-bottom: 0;
     width: 320px;
 }
 
 .cards {
-    margin-left: 36px;
+    display: flex;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.cards::-webkit-scrollbar {
+    display: none;
+}
+
+.card {
+    margin-right: 17px;
 }
 
 .card--main {
@@ -69,11 +82,11 @@ nav {
 
 .status--exp {
     position: absolute;
+    top: 6px;
+    left: 6px;
     display: flex;
     width: 61px;
     height: 20px;
-    margin-left: 7px;
-    top: 527px;
     background-color: #FFFFFF;
 }
 
@@ -84,11 +97,15 @@ nav {
     margin: auto;
 }
 
+.card--header {
+    margin-top: 49px;
+    position: relative;
+}
+
 .img--card {
     height: 235px;
     width: 176px;
     border-radius: 9px;
-    margin-top: 49px;
 }
 
 .card--main--rate--location {
@@ -134,3 +151,8 @@ nav {
     height: 30px;
 }
 
+.card--main--text {
+    width: 175px;
+    height: 14px;
+    overflow: hidden;
+}
